@@ -230,14 +230,24 @@ if executable('gopls')
 				\	}]
 endif
 
-if executable('pyright-langserver')
-    " pyright
-    let lspServers += [#{
-                \   filetype: ['python'],
-                \   name: 'pyright',
-                \   path: 'pyright-langserver',
-                \   args: ['--stdio'],
-                \ }]
+" if executable('pyright-langserver')
+"     " pyright
+"     let lspServers += [#{
+"                 \   filetype: ['python'],
+"                 \   name: 'pyright',
+"                 \   path: 'pyright-langserver',
+"                 \   args: ['--stdio'],
+"                 \ }]
+" endif
+
+if executable('basedpyright-langserver')
+  " basedpyright
+  let lspServers += [{
+        \   'filetype': ['python'],
+        \   'name': 'basedpyright',
+        \   'path': 'basedpyright-langserver',
+        \   'args': ['--stdio'],
+        \ }]
 endif
 
 if executable('ruff')
@@ -245,6 +255,42 @@ if executable('ruff')
 			\		filetype: 'vim',
 			\		name: 'vim-language-server',
 			\		path: 'vim-language-server',
+			\		args: ['--stdio']
+			\	}]
+endif
+
+if executable('vscode-css-language-server')
+	let lspServers += [#{
+			\		filetype: 'css',
+			\		name: 'vscode-css-language-server',
+			\		path: 'vscode-css-language-server',
+			\		args: ['--stdio']
+			\	}]
+endif
+
+if executable('vscode-html-language-server')
+	let lspServers += [#{
+			\		filetype: 'html',
+			\		name: 'vscode-html-language-server',
+			\		path: 'vscode-html-language-server',
+			\		args: ['--stdio']
+			\	}]
+endif
+
+if executable('vscode-json-language-server')
+	let lspServers += [#{
+			\		filetype: 'json',
+			\		name: 'vscode-json-language-server',
+			\		path: 'vscode-json-language-server',
+			\		args: ['--stdio']
+			\	}]
+endif
+
+if executable('vscode-eslint-language-server')
+	let lspServers += [#{
+			\		filetype: 'javascript',
+			\		name: 'vscode-eslint-language-server',
+			\		path: 'vscode-eslint-language-server',
 			\		args: ['--stdio']
 			\	}]
 endif
